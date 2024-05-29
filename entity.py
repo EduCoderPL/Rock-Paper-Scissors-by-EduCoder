@@ -17,6 +17,11 @@ imgs = {0: "imgs/Scissors.png",
         1: "imgs/Rock.png",
         2: "imgs/Paper.png",
         }
+pygame.mixer.init()
+sounds = {0: pygame.mixer.Sound("sounds/paper.mp3"),
+        1: pygame.mixer.Sound("sounds/rock.mp3"),
+        2: pygame.mixer.Sound("sounds/scissors.mp3"),
+        }
 
 class Entity:
 
@@ -109,6 +114,8 @@ class Entity:
         if self.rect.colliderect(otherEntity):
 
             if self.check_target_to_chase(otherEntity):
+
+                sounds[self.type].play()
 
                 Entity.entityTypeCounter[self.type] += 1
                 Entity.entityTypeCounter[otherEntity.type] -= 1

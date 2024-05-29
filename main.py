@@ -17,6 +17,9 @@ def writeText(string, coordx, coordy, fontSize):
 PLAYER_ACC = 0.4
 
 pygame.init()
+pygame.mixer.init()
+
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 player = Entity(100, 200, 0)
