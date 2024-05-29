@@ -5,10 +5,13 @@ from pygame.locals import *
 from entity import Entity
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
+def writeText(string, coordx, coordy, fontSize):
 
-
-
-
+    font = pygame.font.Font('freesansbold.ttf', fontSize)
+    text = font.render(string, True, (255, 255, 255))
+    textRect = text.get_rect()
+    textRect.center = (coordx, coordy)
+    screen.blit(text, textRect)
 
 
 PLAYER_ACC = 0.4
@@ -19,7 +22,7 @@ clock = pygame.time.Clock()
 player = Entity(100, 200, 0)
 
 listOfEntities = []
-for i in range(2):
+for i in range(200):
     xRand = random.randint(50, SCREEN_WIDTH - 100)
     yRand = random.randint(50, SCREEN_HEIGHT - 100)
     typeRand = random.randint(0, 2)
@@ -64,7 +67,13 @@ while running:
     for entity1 in listOfEntities:
         entity1.draw(screen)
 
+    textWithResults = ""
+    for index, value in enumerate(Entity.entityTypeCounter):
+        textWithResults = f"{index}: {value}"
+        writeText(textWithResults, 50, 50 + index * 30, 24)
+
     clock.tick(60)
     pygame.display.flip()
+
 
 pygame.quit()

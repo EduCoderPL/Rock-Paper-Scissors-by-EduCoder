@@ -22,6 +22,8 @@ class Entity:
 
     differentTypeCount = 3
 
+    entityTypeCounter = [0] * differentTypeCount
+
     def __init__(self, x, y, entityType):
 
         self.x = x
@@ -39,6 +41,8 @@ class Entity:
         self.color = TYPE_TO_COLOR[entityType]
 
         self.img = pygame.transform.scale(pygame.image.load(imgs[entityType]), (IMG_WIDTH, IMG_HEIGHT)).convert_alpha()
+
+        Entity.entityTypeCounter[self.type] += 1
 
         self.entityToChase = None
         self.entityToEscape = None
@@ -105,10 +109,17 @@ class Entity:
         if self.rect.colliderect(otherEntity):
 
             if self.check_target_to_chase(otherEntity):
+
+                Entity.entityTypeCounter[self.type] += 1
+                Entity.entityTypeCounter[otherEntity.type] -= 1
+
                 otherEntity.type = self.type
 
                 otherEntity.color = TYPE_TO_COLOR[otherEntity.type]
                 otherEntity.img = pygame.transform.scale(pygame.image.load(imgs[otherEntity.type]), (IMG_WIDTH, IMG_HEIGHT)).convert_alpha()
+
+
+
     def find_closest_entity_to_chase(self, entityList):
 
         self.entityToChase = None
