@@ -19,6 +19,7 @@ class Entity:
 
         self.acc = 0.4
 
+
         self.rect = Rect(self.x, self.y, self.width, self.height)
 
         self.type = entityType
