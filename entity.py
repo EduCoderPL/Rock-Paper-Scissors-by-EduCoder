@@ -13,15 +13,19 @@ IMG_HEIGHT = 64
 
 DRAG_COEFFICIENT = 0.9
 
-imgs = {0: "imgs/Scissors.png",
-        1: "imgs/Rock.png",
-        2: "imgs/Paper.png",
-        }
+imgs = {
+    0: "imgs/Scissors.png",
+    1: "imgs/Rock.png",
+    2: "imgs/Paper.png",
+}
+
 pygame.mixer.init()
-sounds = {0: pygame.mixer.Sound("sounds/paper.mp3"),
-        1: pygame.mixer.Sound("sounds/rock.mp3"),
-        2: pygame.mixer.Sound("sounds/scissors.mp3"),
-        }
+
+sounds = {
+    0: pygame.mixer.Sound("sounds/paper.mp3"),
+    1: pygame.mixer.Sound("sounds/rock.mp3"),
+    2: pygame.mixer.Sound("sounds/scissors.mp3"),
+}
 
 class Entity:
 
