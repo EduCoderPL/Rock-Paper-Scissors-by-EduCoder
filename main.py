@@ -3,14 +3,14 @@ import random
 import pygame
 from pygame.locals import *
 from entity import Entity
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import *
 
 def writeText(string, coordx, coordy, fontSize):
 
     font = pygame.font.Font('freesansbold.ttf', fontSize)
     text = font.render(string, True, (255, 255, 255))
     textRect = text.get_rect()
-    textRect.center = (coordx, coordy)
+    textRect.topleft = (coordx, coordy)
     screen.blit(text, textRect)
 
 
@@ -62,6 +62,8 @@ while running:
             entity1.check_collision(entity2)
 
     screen.fill((0, 0, 0))
+    pygame.draw.rect(screen, (255, 255, 255), Rect(ARENA_X, ARENA_Y, ARENA_WIDTH, ARENA_HEIGHT), 3)
+
     player.draw(screen)
 
     for entity1 in listOfEntities:
@@ -69,8 +71,8 @@ while running:
 
     textWithResults = ""
     for index, value in enumerate(Entity.entityTypeCounter):
-        textWithResults = f"{index}: {value}"
-        writeText(textWithResults, 50, 50 + index * 30, 24)
+        textWithResults = f"{ENTITY_NAMES[index]}: {value}"
+        writeText(textWithResults, 10 + 650 * index, 10, 36)
 
     clock.tick(60)
     pygame.display.flip()

@@ -87,20 +87,20 @@ class Entity:
         self.y += self.yVel
 
     def check_borders(self):
-        if self.x < 0:
-            self.x = 0
+        if self.x < ARENA_X:
+            self.x = ARENA_X
             self.xVel *= -1.4
 
-        if self.x > SCREEN_WIDTH - self.width:
-            self.x = SCREEN_WIDTH - self.width
+        if self.x > ARENA_X + ARENA_WIDTH - self.width:
+            self.x = ARENA_X + ARENA_WIDTH - self.width
             self.xVel *= -1.4
 
-        if self.y < 0:
-            self.y = 0
+        if self.y < ARENA_Y:
+            self.y = ARENA_Y
             self.yVel *= -1.4
 
-        if self.y > SCREEN_HEIGHT - self.height:
-            self.y = SCREEN_HEIGHT - self.height
+        if self.y > ARENA_Y + ARENA_HEIGHT - self.height:
+            self.y = ARENA_Y + ARENA_HEIGHT  - self.height
             self.yVel *= -1.4
 
 

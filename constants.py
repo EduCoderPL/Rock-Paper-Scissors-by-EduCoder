@@ -4,6 +4,12 @@ TYPE_TO_COLOR = {
     2: (0, 0, 200),
 }
 
+ENTITY_NAMES = {
+    0: "SCISSORS",
+    1: "ROCK",
+    2: "PAPER",
+}
+
 SCREEN_WIDTH = 1600
 SCREEN_HEIGHT = 900
 
